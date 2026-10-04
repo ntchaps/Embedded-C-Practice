@@ -1,0 +1,9 @@
+# Vim/Neovim swap files
+*.swp
+*.swo
+*.swn
+*.sw?
+
+# macOS Finder swap files
+._*
+.DS_Store
