@@ -3,6 +3,9 @@
 #include <stdbool.h>
 
 #include "warmup.h"
+#include "fake_hardware_reg.h"
+
+extern volatile uint8_t CTRL_REG;
 
 int main(void){
 	// test is_bit_set
@@ -29,5 +32,8 @@ int main(void){
 	printf("toggle_bit for 01001001: %d\n", toggle_bit(0b01001001, 1));
 	printf("toggle_bit for 01001001: %d\n", toggle_bit(0b01001001, 2));
 	printf("toggle_bit for 01001001: %d\n", toggle_bit(0b01001001, 3));
+
+	// Fake hardware register
+	
 	return 0;
 };
