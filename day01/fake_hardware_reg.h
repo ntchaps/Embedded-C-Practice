@@ -26,15 +26,19 @@ void disable_interrupt(void){
 }
 
 void set_mode(uint8_t mode){
-	mode &= MODE_MASK; // TODO
-	CTRL_REG &= ~MODE_MASK;
-	CTRL_REG |= mode << 2;
+	if (mode < 4){
+		CTRL_REG &= ~MODE_MASK;
+		CTRL_REG |= (mode << 2);
+	}
 }
 
 uint8_t get_mode(void){
-	CTRL_REG &= MODE_MASK;
+	uint8_t mode_num = 0;
+	mode_num = (CTRL_REG >> 2) & 3;
+	return mode_num;
 }
 
 bool has_error(void){
-	CTRL_REG |= ERROR_FLAG_MASK;
+	if (ERROR_FLAG_MASK == (CTRL_REG & ERROR_FLAG_MASK)) return true;
+	else return false;
 };

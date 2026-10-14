@@ -1,5 +1,13 @@
-main: main.c warmup.h
-	gcc main.c -o main
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -std=c11
 
-make:
+main: main.c warmup.h fake_hardware_reg.h binary_print.h
+	$(CC) $(CFLAGS) main.c -o main
+
+run: main
 	./main
+
+clean:
+	rm -f main
+
+.PHONY: run clean
